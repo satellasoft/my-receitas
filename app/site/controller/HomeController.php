@@ -2,14 +2,16 @@
 
 namespace app\site\controller;
 
-class HomeController
+use app\core\Controller;
+
+class HomeController extends Controller
 {
     public function __construct()
     {
-
     }
 
-    public function index(){
-echo 'index HOME';
+    public function index()
+    {
+       $this->load('home/main', ['teste' => '123']);
     }
 }
