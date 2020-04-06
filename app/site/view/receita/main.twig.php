@@ -1,10 +1,10 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %} Categorias - My Receitas {% endblock %}
+{% block title %} Receitas - My Receitas {% endblock %}
 
 {% block body %}
-<h1>Categorias</h1>
-<a href="{{BASE}}categoria/adicionar/" class="btn btn-primary">Nova Categoria</a>
+<h1>Receitas</h1>
+<a href="{{BASE}}receita/adicionar/" class="btn btn-primary">Nova Receitas</a>
 
 <hr>
 
