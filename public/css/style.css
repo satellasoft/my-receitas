@@ -1,0 +1,11 @@
+.max-width{
+    max-width:1200px;
+    width:100%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.logo-top{
+    max-width:30px;
+    width:100%;
+}
