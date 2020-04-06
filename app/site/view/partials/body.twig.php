@@ -1,3 +1,4 @@
+{% apply spaceless %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +28,7 @@
                         <a class="nav-link" href="{{BASE}}categoria/">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{BASE}}receita/">Nova receita</a>
+                        <a class="nav-link" href="{{BASE}}receita/">Receitas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{BASE}}sobre/">Sobre</a>
@@ -49,3 +50,4 @@
 </body>
 
 </html>
+{% endapply %}

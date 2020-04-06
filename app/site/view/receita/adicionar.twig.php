@@ -7,7 +7,7 @@
 
 <hr>
 
-<form action="{{BASE}}receita/insert" onsubmit="return validar(false);" method="post">
+<form action="{{BASE}}receita/inserir" onsubmit="return validar(false);" method="post">
     <div class="row">
         <div class="col-md-5 mt-3">
             <label for="txtTitulo">Título</label>
