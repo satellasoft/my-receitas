@@ -88,6 +88,22 @@ class ReceitaModel
         return $lista;
     }
 
+    public function pesquisar(string $termo)
+    {
+        $sql = 'SELECT r.*, c.titulo as cattitulo FROM receita r INNER JOIN categoria c ON c.id = r.categoria_id WHERE UPPER(r.titulo) LIKE :titulo OR UPPER(r.linha_fina) LIKE :linhafina ORDER BY r.titulo ASC ';
+        $dt = $this->pdo->executeQuery($sql, [
+            ':titulo' => strtoupper("%{$termo}%"),
+            ':linhafina' => strtoupper("%{$termo}%")
+        ]);
+
+        $lista = [];
+
+        foreach ($dt as $dr)
+            $lista[] =  $this->collection($dr);
+
+        return $lista;
+    }
+
     private function collection($arr)
     {
         $receita = new Receita();

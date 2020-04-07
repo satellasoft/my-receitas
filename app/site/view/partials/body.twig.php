@@ -34,9 +34,9 @@
                         <a class="nav-link" href="{{BASE}}sobre/">Sobre</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline my-2 my-lg-0" method="get" action="{{BASE}}pesquisa/" id="frmPesquisa" onsubmit="return pesquisar();">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" minlength="2" required name="txtPesquisa" id="txtPesquisa">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="pesquisar();">Pesquisar</button>
                 </form>
             </div>
         </div>
