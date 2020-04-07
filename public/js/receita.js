@@ -22,6 +22,11 @@ function validar(validateId) {
         valid = false;
     }
 
+    if (getValueById('txtThumb').length < 1) {
+        appendHTMLById('dvAlert', '<div class="alert alert-warning">Informe uma thumbnail</div>');
+        valid = false;
+    }
+
     if (CKEDITOR.instances['txtDescricao'].getData().length < 10) {
         appendHTMLById('dvAlert', '<div class="alert alert-warning">Conteúdo inválido</div>');
         valid = false;

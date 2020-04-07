@@ -16,13 +16,14 @@ class ReceitaModel
 
     public function inserir(Receita $receita)
     {
-        $sql = 'INSERT INTO receita (titulo, slug, linha_fina, descricao, categoria_id, data) VALUES (:titulo, :slug, :linha_fina, :descricao, :categoriaid, :data)';
+        $sql = 'INSERT INTO receita (titulo, slug, linha_fina, descricao, categoria_id, thumb, data) VALUES (:titulo, :slug, :linha_fina, :descricao, :categoriaid, :thumb, :data)';
         $params = [
             ':titulo' => $receita->getTitulo(),
             ':slug' => $receita->getSlug(),
             ':linha_fina' => $receita->getLinhaFina(),
             ':descricao' => $receita->getDescricao(),
             ':categoriaid' => $receita->getCategoriaId(),
+            ':thumb' => $receita->getThumb(),
             ':data' => $receita->getData(),
         ];
 
@@ -34,14 +35,15 @@ class ReceitaModel
 
     public function alterar(Receita $receita)
     {
-        $sql = 'UPDATE receita SET titulo = :titulo, slug = :slug, linha_fina = :linha_fina, descricao = :descricao, categoria_id = :categoriaid WHERE id = :id';
+        $sql = 'UPDATE receita SET titulo = :titulo, slug = :slug, linha_fina = :linha_fina, descricao = :descricao, thumb = :thumb, categoria_id = :categoriaid WHERE id = :id';
         $params = [
             ':id' => $receita->getId(),
             ':titulo' => $receita->getTitulo(),
             ':slug' => $receita->getSlug(),
             ':linha_fina' => $receita->getLinhaFina(),
             ':descricao' => $receita->getDescricao(),
-            ':categoriaid' => $receita->getCategoriaId()
+            ':categoriaid' => $receita->getCategoriaId(),
+            ':thumb' => $receita->getThumb()
         ];
 
         return $this->pdo->executeNonQuery($sql, $params);
@@ -57,6 +59,15 @@ class ReceitaModel
         return $this->collection($dr);
     }
 
+    public function lerPorSlug(string $slug)
+    {
+        $sql = 'SELECT r.*, c.titulo as cattitulo FROM receita r INNER JOIN categoria c ON c.id = r.categoria_id WHERE r.slug = :slug';
+        $dr = $this->pdo->executeQueryOneRow($sql, [
+            ':slug' => $slug
+        ]);
+
+        return $this->collection($dr);
+    }
 
     public function lerUltimos($limit = 10)
     {
@@ -78,6 +89,22 @@ class ReceitaModel
         $sql = 'SELECT r.*, c.titulo as cattitulo FROM receita r INNER JOIN categoria c ON c.id = r.categoria_id WHERE r.categoria_id = :categoriaid ORDER BY r.data DESC ';
         $dt = $this->pdo->executeQuery($sql, [
             ':categoriaid' => $categoriaId
+        ]);
+
+        $lista = [];
+
+        foreach ($dt as $dr)
+            $lista[] =  $this->collection($dr);
+
+        return $lista;
+    }
+
+    public function lerPorCategoriaLimit(int $categoriaId, $limit = 4)
+    {
+        $sql = 'SELECT r.*, c.titulo as cattitulo FROM receita r INNER JOIN categoria c ON c.id = r.categoria_id WHERE r.categoria_id = :categoriaid ORDER BY r.data DESC LIMIT :limit';
+        $dt = $this->pdo->executeQuery($sql, [
+            ':categoriaid' => $categoriaId,
+            ':limit' => $limit
         ]);
 
         $lista = [];
@@ -114,6 +141,7 @@ class ReceitaModel
         $receita->setDescricao(html_entity_decode($arr['descricao'] ?? null));
         $receita->setCategoriaId($arr['categoria_id'] ?? null);
         $receita->setCategoriaTitulo($arr['cattitulo'] ?? null);
+        $receita->setThumb($arr['thumb'] ?? null);
         $receita->setData($arr['data'] ?? null);
         return $receita;
     }

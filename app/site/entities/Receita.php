@@ -12,6 +12,7 @@ class Receita
     private $categoriaId;
     private $categoriaTitulo;
     private $data;
+    private $thumb;
 
     public function setId($id)
     {
@@ -53,6 +54,11 @@ class Receita
         $this->data = $data;
     }
 
+    public function setThumb($thumb)
+    {
+        $this->thumb = $thumb;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -91,5 +97,10 @@ class Receita
     public function getData()
     {
         return $this->data;
+    }
+
+    public function getThumb()
+    {
+        return $this->thumb;
     }
 }

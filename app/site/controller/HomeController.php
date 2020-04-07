@@ -3,15 +3,19 @@
 namespace app\site\controller;
 
 use app\core\Controller;
+use app\site\model\ReceitaModel;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-    }
-
     public function index()
     {
-       $this->load('home/main', ['teste' => '123']);
+        $receitaModel = new ReceitaModel();
+
+        $receitas = [
+            $receitaModel->lerPorCategoriaLimit(1, 4),
+            $receitaModel->lerPorCategoriaLimit(2, 4)
+        ];
+
+        $this->load('home/main', ['listaReceitas' => $receitas]);
     }
 }

@@ -47,7 +47,7 @@
                 <td>{{ receita.data|date('d/m/Y H:i:s') }}</td>
                 <td>
                     <a href="{{BASE}}receita/editar/{{ receita.id }}" class="btn btn-warning">Editar</a>
-                    <a href="{{BASE}}receita/ver/{{ receita.id }}" class="btn btn-info ml-2">Ver</a>
+                    <a href="{{BASE}}receita/ver/{{ receita.slug }}" class="btn btn-info ml-2">Ver</a>
                 </td>
             </tr>
             {% endfor %}

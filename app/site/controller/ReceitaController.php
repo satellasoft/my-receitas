@@ -62,12 +62,11 @@ class ReceitaController extends Controller
         ]);
     }
 
-    public function ver($receitaId)
+    public function ver(string $slug)
     {
+        $receitaId = filter_var($slug, FILTER_SANITIZE_STRING);
 
-        $receitaId = filter_var($receitaId, FILTER_SANITIZE_NUMBER_INT);
-
-        if ($receitaId <= 0) {
+        if (strlen($slug) <= 2) {
             $this->showMessage(
                 'Formulário inválido',
                 'Os dados fornecidos estão incompletos ou são inválidos',
@@ -77,7 +76,7 @@ class ReceitaController extends Controller
         }
 
         $this->load('receita/ver', [
-            'receita' => $this->receitaModel->lerPorId($receitaId)
+            'receita' => $this->receitaModel->lerPorSlug($slug)
         ]);
     }
 
@@ -156,6 +155,9 @@ class ReceitaController extends Controller
         if ($receita->getCategoriaId() <= 0)
             return false;
 
+        if (strlen($receita->getThumb()) < 1)
+            return false;
+
         return true;
     }
 
@@ -167,6 +169,7 @@ class ReceitaController extends Controller
         $receita->setLinhaFina(filter_input(INPUT_POST, 'txtLinhaFina', FILTER_SANITIZE_STRING));
         $receita->setDescricao(filter_input(INPUT_POST, 'txtDescricao', FILTER_SANITIZE_SPECIAL_CHARS));
         $receita->setCategoriaId(filter_input(INPUT_POST, 'slCategoria', FILTER_SANITIZE_NUMBER_INT));
+        $receita->setThumb(filter_input(INPUT_POST, 'txtThumb', FILTER_SANITIZE_STRING));
         $receita->setData(getCurrentDate());
 
         return $receita;

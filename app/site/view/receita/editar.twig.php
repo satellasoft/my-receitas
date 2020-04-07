@@ -4,6 +4,7 @@
 
 {% block body %}
 <h1>Alterar Receita</h1>
+<a href="{{BASE}}receita/ver/{{receita.slug}}" class="btn btn-info">Ver receita</a>
 
 <hr>
 
@@ -34,6 +35,13 @@
         <div class="col-md-12 mt-3">
             <label for="txtLinhaFina">Linha fina</label>
             <input type="text" id="txtLinhaFina" name="txtLinhaFina" class="form-control" placeholder="Descreva a receita" minlength="10" maxlength="250" value="{{receita.linhaFina}}" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <label for="txtThumb">Thumbnail</label>
+            <input type="text" id="txtThumb" name="txtThumb" class="form-control" placeholder="https://mysite.com/img/img.jpg" minlength="1" maxlength="100" value="{{receita.thumb}}" />
         </div>
     </div>
 
