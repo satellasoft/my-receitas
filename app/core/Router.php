@@ -53,7 +53,6 @@ class Router
                 new $controller(),
                 $method
             ],
-
             $this->getParams()
         );
     }

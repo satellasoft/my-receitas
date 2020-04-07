@@ -26,7 +26,7 @@ class Receita
 
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = strtolower($slug);
     }
 
     public function setLinhaFina($linhaFina)

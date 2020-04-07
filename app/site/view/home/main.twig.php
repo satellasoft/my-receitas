@@ -1,9 +1,9 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %} Home - My Receitas {% endblock %}
+{% block title %} My Receitas {% endblock %}
 
 {% block body %}
-<h1>Home</h1>
+<h1>My Receitas</h1>
 <hr>
 
 {% for receitas in listaReceitas %}
@@ -11,18 +11,17 @@
     {% for receita in receitas %}
     <div class="col-md-3">
         <div class="card border-info mb-3">
-            <div class="card-header"></div>
+            <div class="card-header">{{receita.titulo}}</div>
             <div class="card-body">
-                <h4 class="card-title">{{receita.titulo}}</h4>
-                <img src="{{receita.thumb}}" alt="{{receita.titulo}}" class="w-100" />
-                <a href="{{BASE}}receita/ver/{{receita.slug}}" class="btn btn-info w-100">Acessar</a>
+                <a href="{{BASE}}receita/ver/{{receita.slug}}">
+                    <img src="{{receita.thumb}}" alt="{{receita.titulo}}" class="w-100 img-thumb" />
+                </a>
+                <a href="{{BASE}}receita/ver/{{receita.slug}}" class="btn btn-info w-100 mt-2">Acessar</a>
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
 {% endfor %}
-
-
 
 {% endblock %}
