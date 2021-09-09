@@ -12,6 +12,10 @@
     "autoload": {
         "psr-4": {
             "app\\": "app/"
-        }
+        },
+        "files": [
+            "app\\config\\global.php",
+            "app\\functions\\functions.php"
+        ]
     }
 }
