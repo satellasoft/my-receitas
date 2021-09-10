@@ -56,3 +56,6 @@ Observe que na linha acima temos o caminho para a pasta public, definida como **
 * https://academy.satellasoft.com/course/php-mvc-criando-um-site-de-receitas
 * https://twig.symfony.com
 * https://getcomposer.org
+* https://www.mysql.com/products/workbench/
+* https://code.visualstudio.com
+* https://www.apachefriends.org/pt_br/
