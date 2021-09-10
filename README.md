@@ -26,6 +26,22 @@ Utilizando o banco de dados MariaDB/MySQL, construímos classes que permitem faz
 
 Ainda durante o desenvolvimento do projeto, utilizamos o Composer para realizar o gerenciamento de dependências e o MySQL Workbench para que a gente possa criar o banco de dados.
 
+## Configurações
+
+Para realizar as configurações do projeto, basta acessar o arquivo **app/config/global.php** e alterar o valor das constantes.
+
+```php
+
+<?php
+
+define('BASE', '/my-receitas/'); //Qual o diretório que o projeto se encontra
+define('UNSET_COUNT', 1); //Quantos paths devem ser removidos da URI
+
+define('DB_HOST', 'localhost'); //Servidor de banco de dados
+define('DB_USER', 'root'); //Usuário de acesso ao banco de dados
+define('DB_PASS', ''); //Senha de acesso ao banco de dados
+define('DB_NAME', 'myreceitas'); //Nome do banco de dados
+```
 
 ## Links uteis
 
