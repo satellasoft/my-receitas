@@ -1,6 +1,12 @@
 # My Receitas
 
-Aplicação desenvolvida durante o curso de **PHP MVC: Crie um site de receitas**, ministrado pela Academy SatellaSoft (https://academy.satellasoft.com).
+Aplicação desenvolvida durante o curso de **PHP MVC: Crie um site de receitas**, ministrado pela Academy SatellaSoft (https://academy.satellasoft.com/course/php-mvc-criando-um-site-de-receitas).
+
+## Cursos complementares
+
+* https://academy.satellasoft.com/course/php-mvc-criando-um-site-de-receitas
+* https://academy.satellasoft.com/course/php-moderno-criando-uma-aplicacao-com-area-administrativa
+* https://academy.satellasoft.com/course/pdo-com-php-aprenda-a-fazer-um-crud-com-mysql
 
 ## Sobre o projeto
 
